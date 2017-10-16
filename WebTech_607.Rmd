@@ -14,7 +14,7 @@ Pick three of your favorite books on one of your favorite subjects.   At least o
 Take the information that you've selected about these three books, and separately create three files which store the book's information in HTML (using an html table), XML, and JSON formats (e.g.  "books.html", "books.xml", and "books.json").  
 To help you better understand the different file structures, I'd prefer that you create each of these files "by hand" unless you're already very comfortable with the file formats. Write R code, using your packages of choice, to load the information from each of the three sources into separate R data frames.   Are the three data frames identical? Your deliverable is the three source files and the R code.  If you can, package your assignment solution up into an .Rmd file and publish to rpubs.com.  [This will also require finding a way to make your three text files accessible from the web]. 
 
-###R enviroment
+##R enviroment
 
 ```{r setup, include=FALSE}
 library(XML)
@@ -23,37 +23,72 @@ library(rjson)
 library(xlsx)
 ```
 
-###1.HTML
+##1.HTML
 
+
+####Read in .html file
 ```{r}
 setwd("C://Users/Ivy/Desktop/607/W7")
 htmldata<-htmlTreeParse('Books.html', useInternalNodes = T)
 htmldata
-htmlcontent<-getNodeSet(htmldata,"//ul//li")
-htmlcontent<-sapply(htmlcontent,xmlValue)
-htmlcontent
 ```
 
-###2.XML
+
+####GetNodeSet will get value between "ul" and "li" sets. then store value in a list
+```{r}
+htmldf<-getNodeSet(htmldata,"//ul//li")
+htmldf<-sapply(htmldf,xmlValue)
+htmldf
+```
+
+####Strsplit returns a list; use sapply to get the 2nd obs of each list element
 
 ```{r}
-library("methods")
+htmldf1<- sapply(strsplit(htmldf,"\\:"), `[`, 2)
+htmldf1
 ```
+
+####Transform data frame 
+
+```{r}
+htmldf1<-as.data.frame(matrix (htmldf1,nrow=5))
+htmldf1<-as.data.frame(t(htmldf1))
+colnames(htmldf1)<-c("Book","Author","ISBN","Year","Publisher")
+htmldf1
+```
+
+
+##2.XML
+
+####Read in .xml file
 ```{r}
 xmldata<-xmlParse(file="Books.xml")
 xmldata
-xmlcontent<-xmlRoot(xmldata)
-xmlcontent1<-xmlToDataFrame(xmlcontent)
-xmlcontent1
-
 ```
+
+####Xml has nice data frame formate when read into r. 
+
+```{r}
+xmldf<-xmlRoot(xmldata)
+xmldf1<-xmlToDataFrame(xmldf)
+xmldf1
+```
+
 
 ###3.JSON
 
+####Read in .json file, and value automatically store in a list.
+
 ```{r}
-jsondata<-fromJSON(file="books.json")
+jsondata<-fromJSON(file="Books.json")
 jsondata
 ```
 
+####lapply returns a list of jsondata length as X, use do.call to constructs and executes "rbind" call from jsondf of arguments to be passed to it.
+
+```{r}
+jsondf<- lapply(jsondata, function(x) {unlist(x)})
+as.data.frame( do.call("rbind", jsondf))
+```
 
 

@@ -1,10 +1,24 @@
 [
-    {"Book": "R for Data Science"}
-,
-    {"Author":"Hadley Wickham, Garrett Grolemund"}
-,
-    {"Atributs":"Data Management, Tidy,Mutate"}
-]
+        {"Book":"R for Data Science",
+        "Author":"Hadley Wickham, Garrett Grolemund",
+        "ISBN": 1491910399,
+        "Year": 2015,
+        "Publisher": "John Wiley and Sons,Inc"},
     
+    
+    
+       {"Book":"Practical Statistics for Data Scientists: 50 Essential Concepts",
+        "Author":"Peter Bruce, Andrew Bruce",
+        "ISBN": 1491952962,
+        "Year": 2017,
+        "Publisher": "John Wiley and Sons,Inc" },
+    
+        
+        {"Book":"An Introduction to Statistical Learning: with Applications in R",
+        "Author":"Gareth James,Daniela Witten,Trevor Hastie,Robert Tibshirani",
+        "ISBN": 1461471370,
+        "Year": 2013,
+        "Publisher": "Springer"}
+]
     
     

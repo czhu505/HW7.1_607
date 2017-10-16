@@ -1,12 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 
-<a1>  
-     
-        <h1>Book: R for Data Science</h1>
-    	<h2>Author:Hadley Wickham, Garrett Grolemund </h2>
-     	<h3>Atributs:Data Management, Tidy, Mutate  </h3>   
-   
-</a1>
+<Books>  
 
+    <Info>
+	<Book><b>R for Data Science</b></Book>
+    	<Author><i>Hadley Wickham, Garrett Grolemund </i></Author>
+     	<ISBN>1491910399 </ISBN> 
+	<Year>2015 </Year>
+	<Publisher>John Wiley and Sons,Inc </Publisher>
+    </Info>	
+
+    <Info> 
+	<Book><b>Practical Statistics for Data Scientists: 50 Essential Concepts</b></Book>
+    	<Author><i>Peter Bruce, Andrew Bruce </i></Author>
+     	<ISBN>1491952962 </ISBN> 
+	<Year>2017 </Year>
+	<Publisher>O'Reilly Media,Inc </Publisher>
+    </Info>	
+
+    <Info> 
+        <Book><b>An Introduction to Statistical Learning: with Applications in R </b></Book>
+    	<Author><i>Gareth James,Daniela Witten,Trevor Hastie,Robert Tibshirani</i></Author>
+     	<ISBN>1461471370  </ISBN> 
+	<Year>2013 </Year>
+	<Publisher>Springer </Publisher>
+    </Info>       
+ 
+</Books>	
     
     
